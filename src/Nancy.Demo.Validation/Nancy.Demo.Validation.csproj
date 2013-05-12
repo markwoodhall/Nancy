@@ -80,7 +80,16 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\FluentValidation.3.4.0.0\lib\Net40\FluentValidation.dll</HintPath>
     </Reference>
+    <Reference Include="MEvents.Core">
+      <HintPath>..\packages\MEvents.Core.1.1.0.0\lib\Net40\MEvents.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MFlow.Core">
+      <HintPath>..\packages\MFlow.Core.3.2.0.0\lib\Net40\MFlow.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -99,6 +108,17 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Xml\Messages.en.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Xml\Messages.fr-FR.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Scripts\jquery-2.0.0.intellisense.js" />
+    <Content Include="Scripts\jquery-2.0.0.js" />
+    <Content Include="Scripts\jquery-2.0.0.min.js" />
+    <Content Include="Scripts\MFlow.js" />
+    <Content Include="Scripts\MFlowClient.jquery.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -111,10 +131,12 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="OrdersModule.cs" />
     <Compile Include="CustomersModule.cs" />
     <Compile Include="Database\DB.cs" />
     <Compile Include="MainModule.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="ProductsModule.cs" />
     <Compile Include="ValidationBootstrapper.cs" />
@@ -143,11 +165,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="Views\OrderError.spark">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Orders.spark" />
+    <Content Include="Scripts\jquery-2.0.0.min.map" />
     <None Include="Views\CustomerError.spark">
       <SubType>Designer</SubType>
     </None>
     <None Include="Views\Customers.spark" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

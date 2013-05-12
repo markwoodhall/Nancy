@@ -1,0 +1,36 @@
+﻿<viewdata model="Nancy.Demo.Validation.Models.Order[]"/>
+<html>
+  <head>
+    <title>Orders</title>
+    <script src="/Scripts/jquery-2.0.0.js"></script>
+    <script src="/Scripts/MFlow.js"></script>
+    <script src="/Scripts/MFlowClient.jquery.js"></script>
+  </head>
+  <body>
+    <h1>Orders</h1>
+    <p>Current Orders:</p>
+    <ul>
+      <li each="var v in Model">
+        <a href="order/${v.Id}"> ${v.CustomerName} - ${v.Value} </a>
+      </li>
+    </ul>
+
+    <h2>Add another</h2>
+    <form method="POST" action="/orders" id="orderForm">
+      <label for="CustomerName">Customer Name</label>
+      <input type="text" id="CustomerName" name="CustomerName" />
+      <span data-valmsg-for="CustomerName"></span>
+      <label for="Value">Value</label>
+      <input type="text" id="Value" name="Value" />
+      <span data-valmsg-for="Value"></span>
+      <input type="submit"/>
+    </form>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+      $('#orderForm').MFlowClient(${new Nancy.Demo.Validation.Models.Order().ClientValidators});
+      });
+    </script>
+    
+  </body>
+</html>

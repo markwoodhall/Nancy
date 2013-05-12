@@ -9,7 +9,7 @@
         {
             Get["/"] = x =>
                 {
-                    return "<a href='/customers'>Customers</a><br><a href='/products'>Products</a>";
+                    return "<a href='/customers'>Customers</a><br><a href='/products'>Products</a><br /><a href='/orders'>Orders</a>";
                 };
         }
     }
